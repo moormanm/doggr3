@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: MainController', function() {
+describe('Controller: SearchController', function() {
 
   // load the controller's module
   beforeEach(module('doggr3App'));

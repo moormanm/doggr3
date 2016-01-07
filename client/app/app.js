@@ -9,7 +9,8 @@ angular.module('doggr3App', [
   'ngSanitize',
   'ngRoute',
   'ui.bootstrap',
-  'validation.match'
+  'validation.match',
+  'ngTagsInput'
 ])
   .config(function($routeProvider, $locationProvider) {
     $routeProvider
