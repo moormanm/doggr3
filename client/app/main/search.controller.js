@@ -17,6 +17,15 @@ class SearchController {
                     { name: 'Lucy'  },
                     { name: 'Rover'  },
                     { name: 'Jinx'  },
+                    { name: 'Lucy'  },
+                    { name: 'Rover'  },
+                    { name: 'Jinx'  },
+                    { name: 'Lucy'  },
+                    { name: 'Rover'  },
+                    { name: 'Jinx'  },
+                    { name: 'Lucy'  },
+                    { name: 'Rover'  },
+                    { name: 'Jinx'  }
                     ] 
 
   }
