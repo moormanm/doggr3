@@ -4,18 +4,38 @@
 
 <div class="container">
 
-	<h1 class="page-header">CATCH</h1>
+    <h1 class="page-header">CATCH</h1>
 
-	<div class="row">
+    <div class="row">
+        <div class="col-lg-8">
+            <div flow-init="{singleFile:true}" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
+                <h3>
+<a name="image-example" class="anchor" href="#image-example"><span class="octicon octicon-link"></span></a>DOGGR, UPLOAD AN IMAGE OF THINE CATCH</h3>
+                <div class="thumbnail" ng-show="!$flow.files.length">
+                    <img src="http://www.placehold.it/300x150/EFEFEF/AAAAAA&text=no+image" />
+                </div>
+                <div class="thumbnail" ng-show="$flow.files.length">
+                    <img flow-img="$flow.files[0]" />
+                </div>
+                <div>
+                    <span class="btn btn-primary" ng-show="!$flow.files.length" flow-btn>Select image</span>
+                    <span class="btn btn-info" ng-show="$flow.files.length" flow-btn>Change</span>
+                    <span class="btn btn-danger" ng-show="$flow.files.length" ng-click="$flow.cancel()">
+    Remove
+  </span>
+                </div>
+                <p>
 
-	</div>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+
 
 
 </div>
 
 <footer></footer>
 <script>
-
-
-
-

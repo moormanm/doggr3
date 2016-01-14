@@ -10,13 +10,31 @@ angular.module('doggr3App', [
   'ngRoute',
   'ui.bootstrap',
   'validation.match',
-  'ngTagsInput'
+  'ngTagsInput',
+  'flow'
 ])
-  .config(function($routeProvider, $locationProvider) {
-    $routeProvider
-      .otherwise({
-        redirectTo: '/'
-      });
+    .config(function ($routeProvider, $locationProvider) {
 
-    $locationProvider.html5Mode(true);
-  });
+        $routeProvider
+
+            .otherwise({
+            redirectTo: '/'
+        });
+
+        $locationProvider.html5Mode(true);
+    })
+    .config(['flowFactoryProvider', function (flowFactoryProvider) {
+        flowFactoryProvider.defaults = {
+            target: 'upload.php',
+            permanentErrors: [404, 500, 501],
+            maxChunkRetries: 1,
+            chunkRetryInterval: 5000,
+            simultaneousUploads: 4,
+            singleFile: true
+        };
+        flowFactoryProvider.on('catchAll', function (event) {
+            console.log('catchAll', arguments);
+        });
+        // Can be used with different implementations of Flow.js
+        // flowFactoryProvider.factory = fustyFlowFactory;;
+}]);
