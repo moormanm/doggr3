@@ -7,10 +7,13 @@ var DogSchema = new mongoose.Schema({
         index: true
     },
     name: String,
-    picture: Buffer,
+    picture: {
+        type: [mongoose.ObjectId]
+    },
     location: String,
     breed: [String],
     comments: String
 });
+
 
 export default mongoose.model('Dog', DogSchema);
