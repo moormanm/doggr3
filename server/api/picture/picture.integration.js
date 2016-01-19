@@ -2,6 +2,7 @@
 
 var app = require('../..');
 import request from 'supertest';
+var fs = require('fs');
 
 var newPicture;
 
@@ -31,12 +32,18 @@ describe('Picture API:', function () {
     });
 
     describe('POST /api/pictures', function () {
+        var pic = fs.readFileSync('Mr_muffin.png');
+
+        var encodedPic = Buffer(pic).toString('base64');
+        var preamble = 'data:image/png;base64,';
+
+        encodedPic = preamble + encodedPic;
+
         beforeEach(function (done) {
             request(app)
                 .post('/api/pictures')
                 .send({
-                    user_id: 'mayk',
-                    picture: 'BUNCHADATA'
+                    picture: encodedPic
                 })
                 .expect(201)
                 .expect('Content-Type', /json/)
@@ -50,7 +57,8 @@ describe('Picture API:', function () {
         });
 
         it('should respond with the newly created Picture', function () {
-            newPicture.user_id.should.equal('mayk');
+            console.log(newPicture);
+            newPicture.picture.should.exist();
         });
 
     });
@@ -77,7 +85,7 @@ describe('Picture API:', function () {
         });
 
         it('should respond with the requested Picture', function () {
-            newPicture.user_id.should.equal('mayk');
+            newPicture.picture.should.exist();
         });
 
     });
