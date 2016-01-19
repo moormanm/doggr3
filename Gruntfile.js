@@ -633,6 +633,7 @@ module.exports = function (grunt) {
         'wiredep:client',
         'postcss',
         'concurrent:debug'
+        
       ]);
     }
 
@@ -748,6 +749,9 @@ module.exports = function (grunt) {
     ]);
   });
 
+  grunt.loadNpmTasks('grunt-node-inspector');
+  
+  
   grunt.registerTask('build', [
     'clean:dist',
     'concurrent:pre',
@@ -769,7 +773,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'newer:tslint',
+    
     'test',
     'build'
   ]);

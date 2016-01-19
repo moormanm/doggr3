@@ -35,7 +35,9 @@
 			<ul class="col-md-4 col-lg-4 col-sm-12"
 				ng-repeat="dog in dogs">
 				<div class="dog">
-				   <p> this is  {{dog.name}} </p>
+				   <p> Caught by  {{dog.user_id}} </p>
+                   <p> Name:   {{dog.name}} </p>
+                   <img ng-src="api/pictures/{{dog.picture[0]}}"/>
 				</div>
 			</ul>
 		</div>

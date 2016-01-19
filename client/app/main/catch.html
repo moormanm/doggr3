@@ -2,35 +2,88 @@
 
 
 
-<div class="container">
+<div class="container" ng-app="doggr3App" ng-controller="CatchController">
 
-    <h1 class="page-header">CATCH</h1>
 
-    <div class="row">
-        <div class="col-lg-8">
-            <div flow-init="{singleFile:true}" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
-                <h3>
-<a name="image-example" class="anchor" href="#image-example"><span class="octicon octicon-link"></span></a>DOGGR, UPLOAD AN IMAGE OF THINE CATCH</h3>
-                <div class="thumbnail" ng-show="!$flow.files.length">
-                    <img src="http://www.placehold.it/300x150/EFEFEF/AAAAAA&text=no+image" />
-                </div>
-                <div class="thumbnail" ng-show="$flow.files.length">
-                    <img flow-img="$flow.files[0]" />
-                </div>
-                <div>
-                    <span class="btn btn-primary" ng-show="!$flow.files.length" flow-btn>Select image</span>
-                    <span class="btn btn-info" ng-show="$flow.files.length" flow-btn>Change</span>
-                    <span class="btn btn-danger" ng-show="$flow.files.length" ng-click="$flow.cancel()">
-    Remove
-  </span>
-                </div>
-                <p>
+   <h1 class="page-header">CATCH</h1>
 
-                </p>
+
+   <div class="row">
+
+
+      <div>
+         <div class="col-lg-12">
+
+            <div class="col-lg-6" flow-init="{singleFile:true}"  flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()] && writeBase64($file)">
+               <div class="well well-lg">
+                  <h3>IMAGE</h3>
+
+                  <a name="image-example" class="anchor" href="#image-example"><span class="octicon octicon-link"></span></a>
+
+                  <div class="thumbnail" ng-show="!$flow.files.length">
+                     <img src="http://www.placehold.it/500x300/EFEFEF/AAAAAA&text=no+image" />
+                  </div>
+                  <div class="thumbnail" ng-show="$flow.files.length">
+                     <img flow-img="$flow.files[0]" class="dogpic" />
+                  </div>
+                  <div>
+                     <span class="btn btn-primary" ng-show="!$flow.files.length" flow-btn>SELECT IMAGE</span> <span class="btn btn-info" ng-show="$flow.files.length" flow-btn>Change</span> <span class="btn btn-danger" ng-show="$flow.files.length" ng-click="$flow.cancel()">Remove</span>
+                  </div>
+               </div>
             </div>
-        </div>
 
-    </div>
+
+            <div class="col-md-6 container">
+               <div class="row well well-lg"">
+                  <h3>BREEDS</h3>
+
+                  <div class="form-group">
+                        <tags-input id="breeds_srch" replace-spaces-with-dashes=false ng-model="selectedBreeds" placeholder='Add a breed'> <auto-complete source='allBreeds()' /> </tags-input>
+                     <div>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="row well well-lg">
+
+                  <h3>META</h3>
+                  <form name="metaForm">
+                     <div class="form-group">
+                        <label for="dogname" class="control-label">NAME:</label>
+                        <input type='text' class="form-control" name="dogname" ng-model="name" required />
+                        
+                        <label for="comment" class="control-label">COMMENT:</label>
+                        <textarea class="form-control" name="comment" ng-model="comment" required />
+
+                     </div>
+                  </form>
+
+
+               </div>
+
+
+            </div>
+
+
+
+         </div>
+      </div>
+   </div>
+
+
+
+   <div class="row">
+      <form ng-submit="submit()" ng-controller="CatchController">
+
+         <div class="col-lg-1 col-centered">
+            <input type="submit" class="btn-primary btn" id="submit" value="SUBMIT" />
+         </div>
+      </form>
+   </div>
+
+
+
+
 
 
 

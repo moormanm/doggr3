@@ -6,7 +6,9 @@ var PictureSchema = new mongoose.Schema({
         type: String,
         index: true
     },
-    picture: Buffer
+    picture: Buffer,
+    
+    mimetype: String
 });
 
 export default mongoose.model('Picture', PictureSchema);

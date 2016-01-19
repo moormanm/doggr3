@@ -37,9 +37,10 @@ describe('Dog API:', function () {
                 .send({
                     user_id: 'mayk',
                     name: 'Pancake',
-                    location: '123N, 123W',
+                    location: '123N, 123W', 
                     breed: ['Golden Retriever'],
-                    comments: 'She was just born!!'
+                    comments: 'She was just born!!',
+                    picture : ['ASDF12345ASDF', 'asdasda']
                 })
                 .expect(201)
                 .expect('Content-Type', /json/)

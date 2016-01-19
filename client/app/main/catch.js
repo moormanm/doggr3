@@ -6,6 +6,7 @@ angular.module('doggr3App')
       .when('/catch', {
         templateUrl: 'app/main/catch.html',
         controller: 'CatchController',
-        controllerAs: 'CatchCtrl'
+        controllerAs: 'CatchCtrl',
+        authenticate: true
       });
   });

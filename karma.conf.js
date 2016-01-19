@@ -23,6 +23,8 @@ module.exports = function(config) {
       'client/bower_components/angular-validation-match/dist/angular-validation-match.min.js',
       'client/bower_components/bootstrap-tokenfield/dist/bootstrap-tokenfield.js',
       'client/bower_components/ng-tags-input/ng-tags-input.min.js',
+      'client/bower_components/flow.js/dist/flow.js',
+      'client/bower_components/ng-flow/dist/ng-flow.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'client/app/app.js',

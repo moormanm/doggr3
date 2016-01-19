@@ -1,0 +1,19 @@
+
+.dogpic
+{
+	max-width: 800px;
+	max-height: 600px;
+	
+}
+
+.breedpic
+{
+	max-width: 300px;
+	max-height: 200px;
+	
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}

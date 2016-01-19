@@ -13,21 +13,19 @@ class SearchController {
                 ];
     
     
-    $scope.dogs = [ 
-                    { name: 'Lucy'  },
-                    { name: 'Rover'  },
-                    { name: 'Jinx'  },
-                    { name: 'Lucy'  },
-                    { name: 'Rover'  },
-                    { name: 'Jinx'  },
-                    { name: 'Lucy'  },
-                    { name: 'Rover'  },
-                    { name: 'Jinx'  },
-                    { name: 'Lucy'  },
-                    { name: 'Rover'  },
-                    { name: 'Jinx'  }
-                    ] 
-
+    
+    var onDogsLoaded = function(response) {
+    	console.log(response);
+    	$scope.dogs = response.data;
+    };
+    
+    var onDogsLoadError = function(response) {
+    	console.log(response);
+    };
+    
+    
+    $http.get('api/dogs').then(onDogsLoaded);
+    
   }
 
 }

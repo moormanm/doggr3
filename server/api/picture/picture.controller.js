@@ -12,10 +12,27 @@
 import _ from 'lodash';
 import Picture from './picture.model';
 
+function respondAsImage(res, statusCode) {
+    statusCode = statusCode || 200;
+    return function (entity) {
+        if (entity) {   	        	
+        	console.log(entity);
+        	
+        	res.writeHead(200, {'Content-Type':  entity.picture.mimetype  });
+        	console.log('hi there');
+            res.write(entity.picture, 'binary');
+            console.log('hi there');
+            
+        }
+    };
+}
+
+
 function respondWithResult(res, statusCode) {
     statusCode = statusCode || 200;
     return function (entity) {
         if (entity) {
+        	
             res.status(statusCode).json(entity);
         }
     };
@@ -70,13 +87,43 @@ export function index(req, res) {
 export function show(req, res) {
     Picture.findByIdAsync(req.params.id)
         .then(handleEntityNotFound(res))
-        .then(respondWithResult(res))
+        .then(respondAsImage(res))
         .catch(handleError(res));
+}
+
+function digestPicture(body) {
+	console.log(body);
+	
+	
+	
+	//Get the mimetype of the file using regex
+	var regexp = /^data:([^;]+)/;
+	var match = regexp.exec(body.picture);
+	var mimetype = match[1];
+	console.log(match[1]);
+	
+	//Get the base64 payload
+	var dataIdx = body.picture.indexOf('base64')+ 6;
+	var b64data = body.picture.substring(dataIdx);
+	
+	//convert the base 64 into a buffer
+	var buf = new Buffer(b64data, 'base64');
+	
+	//return the formatted image
+	return {
+		mimetype: mimetype,
+		picture: buf,
+		user_id: body.user_id
+	};
+	
+	
+	
+	
 }
 
 // Creates a new Picture in the DB
 export function create(req, res) {
-    Picture.createAsync(req.body)
+    Picture.createAsync( digestPicture( req.body) )
         .then(respondWithResult(res, 201))
         .catch(handleError(res));
 }

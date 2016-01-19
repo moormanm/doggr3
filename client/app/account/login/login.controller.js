@@ -21,6 +21,7 @@ class LoginController {
       .then(() => {
         // Logged in, redirect to home
         this.$location.path('/');
+     
       })
       .catch(err => {
         this.errors.other = err.message;
