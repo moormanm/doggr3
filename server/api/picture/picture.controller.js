@@ -16,12 +16,14 @@ function respondAsImage(res, statusCode) {
     statusCode = statusCode || 200;
     return function (entity) {
         if (entity) {   	        	
-        	console.log(entity);
+        	console.log(entity.mimetype);
+        	console.log('hi there 0');
+        	res.setHeader('Content-Type',  entity.mimetype );
+        	console.log('hi there 1');
         	
-        	res.writeHead(200, {'Content-Type':  entity.picture.mimetype  });
-        	console.log('hi there');
-            res.write(entity.picture, 'binary');
-            console.log('hi there');
+            res.send(entity.picture );
+            
+            console.log('hi there 2');
             
         }
     };
@@ -93,9 +95,7 @@ export function show(req, res) {
 
 function digestPicture(body) {
 	console.log(body);
-	
-	
-	
+
 	//Get the mimetype of the file using regex
 	var regexp = /^data:([^;]+)/;
 	var match = regexp.exec(body.picture);
@@ -123,6 +123,7 @@ function digestPicture(body) {
 
 // Creates a new Picture in the DB
 export function create(req, res) {
+	console.log(req);
     Picture.createAsync( digestPicture( req.body) )
         .then(respondWithResult(res, 201))
         .catch(handleError(res));
