@@ -56,3 +56,8 @@
   left: auto;
 }
 
+.dogimg {
+	  max-width:270px;
+	  max-height:200px;
+}
+

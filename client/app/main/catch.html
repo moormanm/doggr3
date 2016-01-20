@@ -34,7 +34,7 @@
 
 
             <div class="col-md-6 container">
-               <div class="row well well-lg"">
+               <div class="row well well-lg">
                   <h3>BREEDS</h3>
 
                   <div class="form-group">
@@ -53,8 +53,7 @@
                         <input type='text' class="form-control" name="dogname" ng-model="name" required />
                         
                         <label for="comment" class="control-label">COMMENT:</label>
-                        <textarea class="form-control" name="comment" ng-model="comment" required />
-
+                        <textarea class="form-control" name="comment" ng-model="comment" required></textarea>
                      </div>
                   </form>
 
@@ -73,12 +72,13 @@
 
 
    <div class="row">
-      <form ng-submit="submit()" ng-controller="CatchController">
 
          <div class="col-lg-1 col-centered">
-            <input type="submit" class="btn-primary btn" id="submit" value="SUBMIT" />
+               <form ng-submit="submit()" ng-controller="CatchController">
+               <input type="submit" class="btn-primary btn" id="submit" value="SUBMIT" />
+               </form>
          </div>
-      </form>
+      
    </div>
 
 
